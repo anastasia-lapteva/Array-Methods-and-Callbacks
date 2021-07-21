@@ -40,12 +40,16 @@ Use getFinals to do the following:
 hint - you should be looking at the stage key inside of the objects
 */
 
-function getFinals(/* code here */)
+function getFinals(array)
 {
-    /* code here */
+    const finals = array.filter(function (item)
+    {
+        return item.Stage === "Final";
+    });
+    return finals;
 }
 
-
+console.log(`task 2`, getFinals(fifaData));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher-order function called getYears to do the following: 
