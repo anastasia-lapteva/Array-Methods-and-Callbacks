@@ -174,7 +174,7 @@ function getAverageGoals(getFinalsCb)
     avgAwayTeamGoals = avgAwayTeamGoals.toFixed(2);
 }
 
-console.log(getAverageGoals);
+console.log(`task 6`, getAverageGoals(getFinals));
 
 /// 🥅 STRETCH 🥅 ///
 
