@@ -73,6 +73,7 @@ function getYears(array, getFinalsCb)
 const finalsYears = getYears(fifaData, getFinals);
 console.log(`task 3`, finalsYears);
 
+
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher-order function getWinners to do the following:  
 1. Receives an array
@@ -108,6 +109,7 @@ function getWinners(array, getFinalsCb)
 const finalsWinners = getWinners(fifaData, getFinals);
 console.log(`task 4`, finalsWinners);
 
+
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use the higher-order function getWinnersByYear to do the following:
 1. Receive an array
@@ -118,12 +120,24 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(/* code here */)
+function getWinnersByYear(array, getYearsCb, getWinnersCb)
 {
-    /* code here */
+    const years = getYearsCb(array, getFinals);
+    const countries = getWinnersCb(array, getFinals);
+
+    const result = [];
+
+    for (const key in years)
+    {
+        const year = years[key];
+        const country = countries[key];
+
+        result.push(`In ${year}, ${country} won the world cup!`);
+    }
 }
 
-
+const result = getWinnersByYear(fifaData, getYears, getWinners);
+console.log(`task 5`, result);
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher order function getAverageGoals to do the following: 
@@ -135,13 +149,32 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(/* code here */)
+function getAverageGoals(getFinalsCb)
 {
-    /* code here */
+    const finals = getFinalsCb(fifaData);
+
+    let totalHomeTeamGoals = 0;
+    let totalAwayTeamGoals = 0;
+
+
+    for (const key in finals)
+    {
+        let item = finals[key];
+        const homeTeamGoals = item["Home Team Goals"];
+        const awayTeamGoals = item["Away Team Goals"];
+
+        totalHomeTeamGoals += homeTeamGoals;
+        totalAwayTeamGoals += awayTeamGoals;
+    }
+
+    let avgHomeTeamGoals = totalHomeTeamGoals / finals.length;
+    let avgAwayTeamGoals = totalAwayTeamGoals / finals.length;
+
+    avgHomeTeamGoals = avgHomeTeamGoals.toFixed(2);
+    avgAwayTeamGoals = avgAwayTeamGoals.toFixed(2);
 }
 
-
-
+console.log(getAverageGoals);
 
 /// 🥅 STRETCH 🥅 ///
 
